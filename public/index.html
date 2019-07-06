@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>cherish</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but cherish doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
+<script>
+var str = navigator.userAgent.toLowerCase()
+var ver = str.match(/cpu iphone os (.*?) like mac os/)
+if (!ver) { // 非IOS系统
+  // 引入fastclick文件
+  includeFastclickJsFile()
+  // alert('安卓')
+} else {
+  // alert('ios')
+  console.log('你当前的Ios系统版本为：' + ver[1].replace(/_/g, '.'))
+  if (parseInt(ver[1]) >= 11) {
+  // 不必引入fastclick文件
+  } else {
+    // 引入fastclick文件
+    includeFastclickJsFile()
+  }
+}
+
+function includeFastclickJsFile () {
+  var oHead = document.getElementsByTagName('HEAD').item(0)
+  var fastclick = document.createElement('script')
+  fastclick.type = 'text/javascript'
+  fastclick.src = './fastclick.js'
+  oHead.appendChild(fastclick)
+}
+</script>
